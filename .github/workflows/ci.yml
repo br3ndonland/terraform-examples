@@ -39,3 +39,16 @@ jobs:
         run: brew install shfmt
       - name: Check shell script formatting with shfmt
         run: shfmt -d -i 2 .
+      - name: Check shell script formatting with ShellCheck
+        run: |
+          shopt -s globstar nullglob
+          set -- **/*.{sh,bash,ksh}
+          if [ -n "$1" ]; then
+            echo "Checking $@"
+            shellcheck "$@"
+          else
+            echo "No shell scripts for ShellCheck to check."
+          fi
+        shell: bash
+        env:
+          SHELLCHECK_OPTS: -e SC1071 -e SC1090 -e SC1091
