@@ -1,0 +1,99 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "IAMOIDCProviderProvisioningActions",
+      "Effect": "Allow",
+      "Action": [
+        "iam:AddClientIDToOpenIDConnectProvider",
+        "iam:CreateOpenIDConnectProvider",
+        "iam:TagOpenIDConnectProvider"
+      ],
+      "Resource": [
+        "arn:aws:iam::*:oidc-provider/token.actions.githubusercontent.com"
+      ]
+    },
+    {
+      "Sid": "IAMOIDCProviderReadActions",
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetOpenIDConnectProvider",
+        "iam:ListOpenIDConnectProviders",
+        "iam:ListOpenIDConnectProviderTags"
+      ],
+      "Resource": ["*"]
+    },
+    {
+      "Sid": "IAMOIDCProviderCleanupActions",
+      "Effect": "Allow",
+      "Action": [
+        "iam:DeleteOpenIDConnectProvider",
+        "iam:RemoveClientIDFromOpenIDConnectProvider",
+        "iam:UntagOpenIDConnectProvider"
+      ],
+      "Resource": [
+        "arn:aws:iam::*:oidc-provider/token.actions.githubusercontent.com"
+      ]
+    },
+    {
+      "Sid": "IAMRoleProvisioningActions",
+      "Effect": "Allow",
+      "Action": [
+        "iam:AttachRolePolicy",
+        "iam:CreateRole",
+        "iam:PutRolePolicy",
+        "iam:UpdateRole",
+        "iam:UpdateRoleDescription",
+        "iam:UpdateAssumeRolePolicy"
+      ],
+      "Resource": ["arn:aws:iam::*:role/github*"]
+    },
+    {
+      "Sid": "IAMRoleReadActions",
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetRole",
+        "iam:ListAttachedRolePolicies",
+        "iam:ListInstanceProfilesForRole",
+        "iam:ListRolePolicies",
+        "iam:ListRoles"
+      ],
+      "Resource": ["*"]
+    },
+    {
+      "Sid": "IAMRoleCleanupActions",
+      "Effect": "Allow",
+      "Action": [
+        "iam:DeleteRole",
+        "iam:DeleteRolePolicy",
+        "iam:DetachRolePolicy"
+      ],
+      "Resource": ["arn:aws:iam::*:role/github*"]
+    },
+    {
+      "Sid": "IAMPolicyProvisioningActions",
+      "Effect": "Allow",
+      "Action": ["iam:CreatePolicy", "iam:CreatePolicyVersion"],
+      "Resource": ["arn:aws:iam::*:policy/github*"]
+    },
+    {
+      "Sid": "IAMPolicyReadActions",
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetPolicy",
+        "iam:GetPolicyVersion",
+        "iam:ListEntitiesForPolicy",
+        "iam:ListPolicies",
+        "iam:ListPolicyVersions",
+        "iam:ListUserPolicies"
+      ],
+      "Resource": ["*"]
+    },
+    {
+      "Sid": "IAMPolicyCleanupActions",
+      "Effect": "Allow",
+      "Action": ["iam:DeletePolicy", "iam:DeletePolicyVersion"],
+      "Resource": ["arn:aws:iam::*:policy/github*"]
+    }
+  ]
+}
