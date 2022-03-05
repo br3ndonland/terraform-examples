@@ -7,9 +7,12 @@ locals {
 # Create OIDC provider
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_openid_connect_provider
 resource "aws_iam_openid_connect_provider" "github" {
-  client_id_list  = local.oidc_client_ids
-  thumbprint_list = ["a031c46782e6e6c662c2c87c76da9aa62ccabd8e"]
-  url             = "https://${local.oidc_issuer_domain}"
+  client_id_list = local.oidc_client_ids
+  thumbprint_list = [
+    "a031c46782e6e6c662c2c87c76da9aa62ccabd8e",
+    "6938fd4d98bab03faadb97b34396831e3780aea1"
+  ]
+  url = "https://${local.oidc_issuer_domain}"
 }
 
 # Define resource-based role trust policy for IAM role
