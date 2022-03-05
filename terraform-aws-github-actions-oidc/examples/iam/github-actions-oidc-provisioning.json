@@ -7,7 +7,8 @@
       "Action": [
         "iam:AddClientIDToOpenIDConnectProvider",
         "iam:CreateOpenIDConnectProvider",
-        "iam:TagOpenIDConnectProvider"
+        "iam:TagOpenIDConnectProvider",
+        "iam:UpdateOpenIDConnectProviderThumbprint"
       ],
       "Resource": [
         "arn:aws:iam::*:oidc-provider/token.actions.githubusercontent.com"
