@@ -53,7 +53,8 @@ https://events.hashicorp.com/aws-immersion-day/terraform-aug11
 
 ## Chapter 4 - modules
 
-- We forked [terraform-aws-modules/terraform-aws-s3-bucket](https://github.com/terraform-aws-modules/terraform-aws-s3-bucket) and used it to set up a [private module registry](https://www.terraform.io/docs/registry/private.html).
+- We created a [GitHub OAuth app](https://www.terraform.io/docs/cloud/vcs/github.html), which is required for publishing modules to the [private module registry](https://www.terraform.io/docs/registry/private.html), even if you already have the [configuration-free GitHub app](https://www.terraform.io/docs/cloud/vcs/github-app.html) installed.
+- We forked [terraform-aws-modules/terraform-aws-s3-bucket](https://github.com/terraform-aws-modules/terraform-aws-s3-bucket) and published it to the private module registry.
 - We then also did some Terraform Cloud API calls. See the Terraform docs on [creating variables with the API](https://www.terraform.io/docs/cloud/api/variables.html#create-a-variable) and [creating runs with the API](https://www.terraform.io/docs/cloud/api/run.html#create-a-run).
 
   ```sh
