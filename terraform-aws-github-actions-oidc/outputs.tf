@@ -1,9 +1,11 @@
-output "role_arn" {
-  value       = aws_iam_role.github_actions_oidc.arn
-  description = "ARN of AWS IAM role that has been assumed"
-}
-
-output "role_name" {
-  value       = aws_iam_role.github_actions_oidc.name
-  description = "Name of AWS IAM role that has been assumed"
+output "aws_iam_roles" {
+  depends_on  = [aws_iam_role.github_actions_oidc]
+  description = "ARNs and names of AWS IAM roles that have been provisioned"
+  value = {
+    for key, value in local.github_repos :
+    key => {
+      arn  = aws_iam_role.github_actions_oidc[key].arn
+      name = aws_iam_role.github_actions_oidc[key].name
+    }
+  }
 }

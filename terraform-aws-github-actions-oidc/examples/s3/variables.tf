@@ -8,12 +8,7 @@ variable "aws_s3_bucket_name" {
   type = string
 }
 
-variable "github_org" {
-  description = "GitHub user or organization name"
-  type        = string
-}
-
-variable "github_repo" {
-  description = "GitHub repository from which the role can be assumed"
-  type        = string
+variable "github_repos" {
+  description = "Set of GitHub repositories to configure, in owner/repo format"
+  type        = set(string)
 }

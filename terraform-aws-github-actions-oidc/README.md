@@ -43,10 +43,8 @@ Set [Terraform input variables](https://www.terraform.io/docs/language/values/va
 
 ```hcl
 # terraform.tfvars
-aws_iam_role_name   = "<YOUR_IAM_ROLE_NAME>" # optional
-github_org          = "<YOUR_GITHUB_ORG>"    # REQUIRED
-github_repo         = "<YOUR_REPO>"          # REQUIRED
-github_custom_claim = "ref:refs/heads/main"  # optional
+github_custom_claim = "ref:refs/heads/main"          # optional
+github_repos        = ["owner/repo0", "owner/repo1"] # REQUIRED
 ```
 
 Variable definitions files named `terraform.tfvars` or `*.auto.tfvars` will be loaded automatically. If using a variable definitions file with a different name, use `-var-file=filename.tfvars` when running `terraform apply`.

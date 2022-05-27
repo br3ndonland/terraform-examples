@@ -1,7 +1,13 @@
-variable "aws_iam_role_name" {
-  description = "Name for IAM role that will be assumed by GitHub for OIDC"
+variable "aws_iam_role_prefix" {
+  description = "Prefix for name of IAM role that will be assumed by GitHub for OIDC"
   type        = string
   default     = "github-actions-oidc"
+}
+
+variable "aws_iam_role_separator" {
+  description = "Character to use to separate words in name of IAM role"
+  type        = string
+  default     = "-"
 }
 
 variable "github_custom_claim" {
@@ -10,12 +16,7 @@ variable "github_custom_claim" {
   default     = "*"
 }
 
-variable "github_org" {
-  description = "GitHub user or organization name"
-  type        = string
-}
-
-variable "github_repo" {
-  description = "GitHub repository from which the role can be assumed"
-  type        = string
+variable "github_repos" {
+  description = "Set of GitHub repositories to configure, in owner/repo format"
+  type        = set(string)
 }

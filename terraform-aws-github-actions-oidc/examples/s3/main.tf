@@ -1,3 +1,13 @@
+locals {
+  github_repos = {
+    for repo in var.github_repos :
+    replace(repo, "/", "-") => {
+      owner = split("/", repo)[0]
+      repo  = split("/", repo)[1]
+    }
+  }
+}
+
 # Configure provider
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs
 provider "aws" {
@@ -8,10 +18,8 @@ provider "aws" {
 # https://www.terraform.io/docs/language/modules/syntax.html
 # https://www.terraform.io/docs/cloud/registry/using.html
 module "github_actions_oidc" {
-  source            = "app.terraform.io/<YOUR_TERRAFORM_CLOUD_ORG>/github-actions-oidc/aws"
-  aws_iam_role_name = "github-actions-oidc-${var.github_repo}"
-  github_org        = var.github_org
-  github_repo       = var.github_repo
+  source       = "app.terraform.io/<YOUR_TERRAFORM_CLOUD_ORG>/github-actions-oidc/aws"
+  github_repos = var.github_repos
 }
 
 # Define identity-based policies for IAM role (what the role can do after it has been assumed)
@@ -35,6 +43,7 @@ resource "aws_iam_policy" "s3_bucket" {
 
 # Attach identity-based policies to IAM role
 resource "aws_iam_role_policy_attachment" "s3_bucket_attachment" {
-  role       = module.github_actions_oidc.role_name
+  for_each   = local.github_repos
+  role       = module.github_actions_oidc.aws_iam_roles[each.key].name
   policy_arn = aws_iam_policy.s3_bucket.arn
 }
