@@ -21,7 +21,7 @@ If using the [Terraform Cloud remote backend](https://www.terraform.io/docs/clou
 
 | Key                               | Category  |
 | --------------------------------- | --------- |
-| AWS_ACCESS_KEY_ID `SENSITIVE`     | env       |
+| AWS_ACCESS_KEY_ID                 | env       |
 | AWS_SECRET_ACCESS_KEY `SENSITIVE` | env       |
 | aws_provider_region               | terraform |
 | aws_s3_bucket_name                | terraform |

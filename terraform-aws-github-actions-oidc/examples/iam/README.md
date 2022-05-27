@@ -36,5 +36,5 @@ The access key credentials can then be set as Terraform Cloud workspace variable
 
 | Key                               | Category |
 | --------------------------------- | -------- |
-| AWS_ACCESS_KEY_ID `SENSITIVE`     | env      |
+| AWS_ACCESS_KEY_ID                 | env      |
 | AWS_SECRET_ACCESS_KEY `SENSITIVE` | env      |
