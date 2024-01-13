@@ -18,10 +18,9 @@ variable "organization_settings" {
   }))
   default = {
     org-1 = {
-      advanced_security               = true
-      billing_email                   = "you@example.com"
-      configure_organization_settings = true
-      default_repository_permission   = "read"
+      advanced_security             = true
+      billing_email                 = "you@example.com"
+      default_repository_permission = "read"
     }
     org-2 = {
       billing_email                 = "you@example.com"
