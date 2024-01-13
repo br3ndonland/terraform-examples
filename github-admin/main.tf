@@ -64,6 +64,7 @@ resource "github_repository" "repo" {
   allow_rebase_merge          = each.value.allow_rebase_merge
   allow_squash_merge          = each.value.allow_squash_merge
   allow_update_branch         = true
+  auto_init                   = true
   squash_merge_commit_title   = "PR_TITLE"
   squash_merge_commit_message = "PR_BODY"
   delete_branch_on_merge      = true
