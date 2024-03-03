@@ -24,6 +24,8 @@ Each new GitHub repo automatically gets a `main` branch. It is common to have ot
 
 The default branch can be set with `var.repos`.
 
+Each new branch in a GitHub repo is created from a source branch, which defaults to `main`. To specify a different source branch, use "from" in the branch name, like `"new-branch-name from source-branch-name"`, in the list of branches in `var.repos`.
+
 ### Rulesets
 
 [Rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) specify rules for branches and tags. [Repository rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository) apply to a single repo and can be managed with the [`github_repository_ruleset` resource](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/repository_ruleset). [Organization rulesets](https://docs.github.com/en/enterprise-cloud@latest/organizations/managing-organization-settings/creating-rulesets-for-repositories-in-your-organization#selecting-branch-or-tag-protections) can apply to multiple repos in an organization and can be managed with the [`github_organization_ruleset` resource](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/organization_ruleset).

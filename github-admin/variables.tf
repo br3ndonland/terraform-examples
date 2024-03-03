@@ -67,7 +67,7 @@ variable "repos" {
         protected_branch_names = [
           "development",
           "production",
-          "staging",
+          "staging from development",
         ]
         required_signatures = {
           development = true

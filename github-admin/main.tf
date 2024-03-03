@@ -15,8 +15,9 @@ locals {
   }
   repo_branch_configurations = merge([
     for key, branch_names in local.repo_branch_names : {
-      for branch_name in branch_names : "${key}-${branch_name}" => {
-        branch         = branch_name
+      for branch_name in branch_names : "${key}-${replace(branch_name, "/[\\*\\s].*/", "")}" => {
+        branch         = replace(branch_name, "/[\\*\\s].*/", "")
+        source_branch  = strcontains(branch_name, " from ") ? split(" from ", branch_name)[1] : "main"
         repository     = var.repos[var.owner][key].name
         repository_key = key
       }
@@ -114,8 +115,9 @@ resource "github_branch" "branch" {
     for key, value in local.repo_branch_configurations :
     key => value if value.branch != "main"
   }
-  branch     = each.value.branch
-  repository = each.value.repository
+  branch        = each.value.branch
+  source_branch = each.value.source_branch
+  repository    = each.value.repository
 }
 
 resource "github_branch_default" "default" {
